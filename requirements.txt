@@ -6,6 +6,5 @@ easyocr
 torch
 ultralytics
 gtts
-io
 opencv-python-headless
 
