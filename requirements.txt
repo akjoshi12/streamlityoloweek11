@@ -1,0 +1,14 @@
+streamlit
+numpy
+pandas
+opencv-python
+easyocr
+torch
+ultralytics
+collections 
+re
+base64
+gtts
+io
+opencv-python-headless
+
