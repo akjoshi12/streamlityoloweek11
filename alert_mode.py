@@ -6,7 +6,7 @@ import streamlit as st
 
 
 
-def alert(filepath):
+def alert(filepath, confidence):
     class_list = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 
               'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
 
@@ -117,7 +117,7 @@ def alert(filepath):
         start_x=(width-crop_width)//2
         start_y=(height-crop_height)//2
         cropped_frame=frame[start_y:start_y+crop_height,start_x:start_x+crop_width]
-        results=model(cropped_frame,show=False)
+        results=model(cropped_frame, conf = confidence ,show=False)
         a=results[0].boxes.data
         a=a.detach().cpu().numpy()
         px = pd.DataFrame(a).astype("float")
@@ -237,6 +237,3 @@ def alert(filepath):
     cap.release()
     cv2.destroyAllWindows()
     return car,cycle,truck,bus,bike
-
-
-
