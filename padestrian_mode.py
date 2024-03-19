@@ -4,7 +4,7 @@ import streamlit as st
 #initiate YOLO model
 model = YOLO('yolov8n.pt')
 
-def obj_detection(filepath):
+def obj_detection(filepath,confidence):
     video_path = filepath
     cap = cv2.VideoCapture(video_path)
     pred=''
@@ -13,7 +13,7 @@ def obj_detection(filepath):
         if not success:
             break  # If no frame is read, break the loop
         #predict
-        results = model(frame,show=False)
+        results = model(frame,conf = confidence,show=False)
         
         #get class id of prediction as a tensor from r.boxes inside results, convert into int and get class name from class id
         for r in results:
