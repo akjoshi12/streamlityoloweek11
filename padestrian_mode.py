@@ -25,7 +25,7 @@ def obj_detection(filepath,confidence):
                 if pred==class_name:
                     pass
                 else:
-                    st.write(class_name)
+                    st.write("Object Detected : " + class_name)
                     pred=class_name
             
     # Release resources
