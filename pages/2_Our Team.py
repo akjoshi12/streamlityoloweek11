@@ -7,7 +7,7 @@ st.write("--------------------------------------")
 # # Team member data (replace with your actual data)
 team_members = [
     {"image": "Profiles/sameer.jpeg", "name": "Sameer Sharma", "role": "Team Lead", "tagline": "Third Eye"},
-    {"image": "Profiles/Shubham.jpeg", "name": "Shubham Bhavsar", "role": "Machine Learning Lead", "tagline": "Third Eye"},
+    {"image": "Profiles/shubham.jpeg", "name": "Shubham Bhavsar", "role": "Machine Learning Lead", "tagline": "Third Eye"},
     {"image": "Profiles/Atri_joshi.jpeg", "name": "Atri Joshi", "role": "Data Lead", "tagline": "Third Eye"},
     {"image": "Profiles/ayesha.jpeg", "name": "Ayesha Quereshi", "role": "UI/Documentation", "tagline": "Third Eye"},
     {"image": "Profiles/janvi.jpeg", "name": "Janvi Rai", "role": "UI/Documentation", "tagline": "Third Eye"},
