@@ -5,19 +5,23 @@ from padestrian_mode import *
 from object_det_app import *
 
 
-
 model_OCR = YOLO('yolov8n.pt')
 model = YOLO('yolov8n.pt')
+temporary_location = None
 
 def padestrian_mode(uploaded_file,conf):
     st.empty()
     st.write('pedestrian mode')
     #results = model(source="bike_r.mp4", show=True, conf=0.4, save=True, project='streamlit') 
     if uploaded_file is not None:
+        
         st.write("File Uploaded")  
-        f_path = uploaded_file.name
+        temporary_location = "testout_simple.mp4"
+        with open(temporary_location, 'wb') as out:  ## Open temporary file as bytes
+            out.write(uploaded_file.read())  ## Read bytes into file
 
-        obj_detection(f_path,conf/100)
+
+        obj_detection(temporary_location,conf/100)
  
     else:
         st.write("Please upload a video file.")
@@ -30,9 +34,12 @@ def alert_mode(uploaded_file,conf):
     if uploaded_file is not None:
         st.write("File Uploaded")    
 
-        f_path = uploaded_file.name
+        temporary_location = "testout_simple.mp4"
+        with open(temporary_location, 'wb') as out:  ## Open temporary file as bytes
+            out.write(uploaded_file.read())  ## Read bytes into file
+
         st.write('File Uploaded')
-        res = alert(f_path,conf/100)
+        res = alert(temporary_location,conf/100)
 
         obj_list = ['car','cycle','truck','bus','bike']
         print(res)
@@ -54,9 +61,12 @@ def OCR(uploaded_file,conf_level):
     if uploaded_file is not None:
 
         st.write('File Uploaded')
-        f_path = uploaded_file.name
+        temporary_location = "testout_simple.mp4"
+        with open(temporary_location, 'wb') as out:  ## Open temporary file as bytes
+            out.write(uploaded_file.read())  ## Read bytes into file
 
-        vid_cap = cv2.VideoCapture(f_path)
+
+        vid_cap = cv2.VideoCapture(temporary_location,conf_level)
         detected_text = main_func(vid_cap, model_OCR, conf_level/100)
         st.write("Most common text:", detected_text)
 
